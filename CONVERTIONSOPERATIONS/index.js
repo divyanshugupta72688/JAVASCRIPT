@@ -6,7 +6,7 @@ let convert = Number(score);
 console.log(typeof(convert));
 
 /*
-NOTE1=>WHEN A STRING IS GIVEN AND U WANT TO CONVERT INTO NUMBER THEN IT GIVES NAN(NOT A NUMBER)
+NOTE1=>WHEN A STRING IS GIVEN AND U WANT TO CONVERT INTO NUMBER THEN IT GIVES NaN(NOT A NUMBER)
 NOTE2=>"33abc"=>NaN buttype will be number
 NOTE3=> true=>1,false=>0
 */
