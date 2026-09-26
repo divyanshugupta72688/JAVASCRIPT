@@ -61,3 +61,8 @@ console.log(student);// city will NOT be added.
 delete student.branch;
 console.log(student);// branch will NOT be deleted.
 
+
+
+const tinderuser = new Object();//singleton object
+const tinderuser2 = {};//non-singleton object
+
