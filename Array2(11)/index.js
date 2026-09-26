@@ -19,3 +19,12 @@ console.log(all_heros);
 const all_new_heros = [...marvel_heros,...dc_heros];
 console.log(all_new_heros);
 
+console.log(Array.isArray("Divyanshu"));//false
+console.log(Array.from("Divyanshu"));// connvert into array
+/*
+[
+  'D', 'i', 'v',
+  'y', 'a', 'n',
+  's', 'h', 'u'
+]
+*/
