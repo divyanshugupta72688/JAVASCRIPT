@@ -14,3 +14,11 @@ console.log(...arr);
 Rest = Collect 📦
 Spread = Expand/Spread 📤
 */
+
+// we can declare function as a varriable
+
+const sayHello = function () {
+    console.log("Hello Divyanshu");
+};
+
+sayHello();
