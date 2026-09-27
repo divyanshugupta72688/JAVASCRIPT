@@ -228,8 +228,27 @@ username
 
 same nahi hain.
 */
+/*
 
+============================================================
+                    SPECIAL TOPIC(POINT OF INTERVIEW)
+============================================================
 
+*/
+
+/*
+IIFE → Immediately Invoked Function Expression
+
+GLOBAL SCOPE KE POLLUTION KO AVOID KARNE KE LIYE
+HUM IIFE KA USE KAR SAKTE HAIN.
+
+(function chai() {
+    console.log("DB Connected");
+})();
+
+OUTPUT:
+DB Connected
+*/
 /*
 
 ============================================================
