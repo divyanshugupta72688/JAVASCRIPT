@@ -390,8 +390,13 @@ Interview mein generally === aur !== prefer kiye jaate hain.
 
 console.log(5 == "5");   // true
 console.log(5 === "5");  // false
+console.log(5 !== 5);     // false
+console.log(5 !== "5");   // true
 
-
+/*
+===  → Kya dono EXACTLY SAME hain?
+!==  → Kya dono EXACTLY SAME NAHI hain?
+*/
 // ========================================================
 // 13. LOGICAL OPERATORS
 // ========================================================
@@ -426,9 +431,7 @@ condition ? true_value : false_value
 
 let userAge2 = 20;
 
-let message = userAge2 >= 18
-    ? "Adult"
-    : "Minor";
+let message = userAge2 >= 18? "Adult": "Minor";
 
 console.log(message);
 
@@ -544,4 +547,9 @@ break
 continue
     -> Skips current iteration
 */
- 
+ /*
+
+============================================================
+                    END
+============================================================
+*/
