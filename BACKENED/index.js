@@ -1,124 +1,80 @@
 /*
 ===========================================================
-       NODE.JS + EXPRESS.JS + MONGODB NOTES
-       SIMPLE LANGUAGE + INTERVIEW QUESTIONS
+        BACKEND JAVASCRIPT NOTES
+        NODE.JS + EXPRESS.JS + MONGODB
+        SIMPLE LANGUAGE + INTERVIEW
 ===========================================================
 
-This file covers:
-
-1. Node.js
-2. NPM
-3. Modules
-4. File System
-5. HTTP Server
-6. REST API
-7. Express.js
-8. Middleware
-9. Routing
-10. Request / Response
-11. CRUD API
-12. Error Handling
-13. Authentication Basics
-14. MongoDB
-15. MongoDB CRUD
-16. Mongoose
-17. Schema
-18. Model
-19. Relationships
-20. MongoDB Interview Questions
-21. Express Interview Questions
-22. Node.js Interview Questions
 
 ===========================================================
-*/
-
-
-/*
+SECTION 1: NODE.JS BASICS
 ===========================================================
+
+Topics:
+
+1. What is Node.js?
+2. Why do we use Node.js?
+3. V8 Engine
+4. Node.js Single-Threaded
+5. Synchronous vs Asynchronous
+6. Blocking vs Non-Blocking
+7. Event-Driven Architecture
+8. Event Loop
+
+-----------------------------------------------------------
+
 1. WHAT IS NODE.JS?
-===========================================================
+-----------------------------------------------------------
 
 Node.js is a JavaScript runtime.
 
 It allows us to run JavaScript outside the browser.
 
-Normally:
-
 Browser
    ↓
 JavaScript
 
+Node.js
+   ↓
+JavaScript
+   ↓
+Server
 
-With Node.js:
-
-Computer/Server
-      ↓
-   Node.js
-      ↓
- JavaScript
-
-
-Example:
-
-console.log("Hello Node.js");
-
-Run:
-
-node app.js
-
-
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is Node.js?
 
 Answer:
 
-Node.js is a JavaScript runtime environment built on the
-V8 JavaScript engine that allows JavaScript to run outside
-the browser, especially on servers.
-*/
+Node.js is a JavaScript runtime environment built on
+the V8 JavaScript engine that allows JavaScript to run
+outside the browser, especially on servers.
 
 
-/*
-===========================================================
+-----------------------------------------------------------
 2. WHY DO WE USE NODE.JS?
-===========================================================
+-----------------------------------------------------------
 
 Node.js is commonly used for:
 
 1. Backend development
 2. REST APIs
-3. Real-time applications
-4. Web servers
+3. Web servers
+4. Real-time applications
 5. File handling
 6. Database applications
 7. Microservices
 
 
-INTERVIEW QUESTION:
-
-Q. Why is Node.js popular?
-
-Answer:
-
-Node.js allows developers to use JavaScript on both the
-frontend and backend. It also provides an asynchronous,
-event-driven model that is useful for I/O-heavy applications.
-*/
-
-
-/*
-===========================================================
+-----------------------------------------------------------
 3. V8 ENGINE
-===========================================================
+-----------------------------------------------------------
 
-V8 is the JavaScript engine developed by Google.
+V8 is Google's JavaScript engine.
 
 Chrome uses V8.
 
-Node.js also uses V8 to execute JavaScript.
-
-Basic flow:
+Node.js also uses V8.
 
 JavaScript
     ↓
@@ -127,64 +83,51 @@ V8 Engine
 Machine Code
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Which JavaScript engine does Node.js use?
 
 Answer:
 
 Node.js uses Google's V8 JavaScript engine.
-*/
 
 
-/*
-===========================================================
-4. NODE.JS IS SINGLE-THREADED
-===========================================================
+-----------------------------------------------------------
+4. NODE.JS SINGLE-THREADED
+-----------------------------------------------------------
 
 Node.js uses a single main JavaScript thread.
 
-It uses an event-driven, non-blocking architecture to
-handle many I/O operations efficiently.
-
-
-IMPORTANT:
-
-Single-threaded does NOT mean Node.js can handle only one
+But this does NOT mean Node.js can handle only one
 request at a time.
 
-Its asynchronous architecture allows it to handle many
-I/O operations efficiently.
+Node.js uses asynchronous and non-blocking architecture
+to handle many I/O operations efficiently.
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Is Node.js single-threaded?
 
 Answer:
 
 The main JavaScript execution in Node.js is single-threaded,
-but Node.js can use the operating system and its underlying
-libraries to handle asynchronous I/O and certain operations
-outside that main thread.
-*/
+but Node.js can handle asynchronous I/O using its runtime
+architecture and underlying system facilities.
 
 
-/*
-===========================================================
+-----------------------------------------------------------
 5. SYNCHRONOUS VS ASYNCHRONOUS
-===========================================================
+-----------------------------------------------------------
 
 Synchronous:
 
 One operation waits for another operation to finish.
 
-
 Asynchronous:
 
 A long-running I/O operation can be started without
 blocking the main JavaScript execution.
-
 
 Example:
 
@@ -196,58 +139,63 @@ setTimeout(() => {
 
 console.log("End");
 
-
 Output:
 
 Start
 End
 Async task
-*/
 
 
-/*
-===========================================================
+-----------------------------------------------------------
 6. BLOCKING VS NON-BLOCKING
-===========================================================
+-----------------------------------------------------------
 
 Blocking:
 
 The next code waits until the current operation finishes.
 
+Non-Blocking:
 
-Non-blocking:
+Program can continue while an I/O operation is being
+handled asynchronously.
 
-The program can continue while an I/O operation is
-being handled asynchronously.
+INTERVIEW:
 
-
-INTERVIEW QUESTION:
-
-Q. Why is non-blocking I/O important in Node.js?
+Q. Why is non-blocking I/O important?
 
 Answer:
 
 It allows Node.js to continue handling other work while
 I/O operations are waiting to complete.
-*/
 
 
-/*
 ===========================================================
-7. NPM
+SECTION 2: NPM + PROJECT SETUP
 ===========================================================
+
+Topics:
+
+1. NPM
+2. package.json
+3. node_modules
+4. package-lock.json
+5. npm commands
+
+
+-----------------------------------------------------------
+1. NPM
+-----------------------------------------------------------
 
 NPM = Node Package Manager.
 
-It is used to:
+Used to:
 
 1. Install packages
 2. Manage dependencies
 3. Run scripts
 4. Publish packages
 
-
-Common commands:
+Commands:
 
 npm init
 
@@ -260,7 +208,7 @@ npm uninstall express
 npm install
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is npm?
 
@@ -268,13 +216,11 @@ Answer:
 
 npm is the package manager commonly used with Node.js
 for installing and managing JavaScript packages.
-*/
 
 
-/*
-===========================================================
-8. package.json
-===========================================================
+-----------------------------------------------------------
+2. package.json
+-----------------------------------------------------------
 
 package.json contains project information and configuration.
 
@@ -286,7 +232,6 @@ scripts
 dependencies
 devDependencies
 
-
 Example:
 
 {
@@ -297,23 +242,20 @@ Example:
     }
 }
 
-
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is package.json?
 
 Answer:
 
-package.json is a configuration file that describes a
-Node.js project, including metadata, scripts and package
-dependencies.
-*/
+package.json is a configuration file that describes
+a Node.js project, including metadata, scripts and
+package dependencies.
 
 
-/*
-===========================================================
-9. node_modules
-===========================================================
+-----------------------------------------------------------
+3. node_modules
+-----------------------------------------------------------
 
 node_modules contains installed packages.
 
@@ -325,57 +267,57 @@ This creates:
 
 node_modules/
 
-
-IMPORTANT:
-
 Usually we don't upload node_modules to GitHub.
 
-Instead we upload:
+We upload:
 
 package.json
 package-lock.json
 
-
-Then another developer runs:
+Other developer runs:
 
 npm install
 
 
 ===========================================================
-*/
+SECTION 3: NODE.JS MODULES
+===========================================================
+
+Topics:
+
+1. Modules
+2. CommonJS
+3. ES Modules
+4. require()
+5. module.exports
+6. Core Modules
 
 
-/*
-===========================================================
-10. MODULES
-===========================================================
+-----------------------------------------------------------
+1. MODULES
+-----------------------------------------------------------
 
 Modules allow us to divide code into multiple files.
 
-There are two common module systems:
+Two common module systems:
 
 1. CommonJS
 2. ES Modules
-*/
 
 
-/*
-COMMONJS
+-----------------------------------------------------------
+2. COMMONJS
+-----------------------------------------------------------
 
 math.js
-*/
-
 
 function add(a, b) {
-
     return a + b;
-
 }
 
 module.exports = add;
 
 
-/*
 app.js
 
 const add = require("./math");
@@ -384,15 +326,13 @@ console.log(add(10, 20));
 
 
 -----------------------------------------------------------
-
-ES MODULES
+3. ES MODULES
+-----------------------------------------------------------
 
 math.js
 
 export function add(a, b) {
-
     return a + b;
-
 }
 
 
@@ -403,21 +343,19 @@ import { add } from "./math.js";
 console.log(add(10, 20));
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Why do we use modules?
 
 Answer:
 
-Modules help divide code into smaller reusable files and
-make large applications easier to maintain.
-*/
+Modules help divide code into smaller reusable files
+and make large applications easier to maintain.
 
 
-/*
-===========================================================
-11. CORE MODULES
-===========================================================
+-----------------------------------------------------------
+4. CORE MODULES
+-----------------------------------------------------------
 
 Node.js provides built-in modules.
 
@@ -430,41 +368,39 @@ os
 events
 url
 
-
-Example:
-
-const fs = require("fs");
-
-const path = require("path");
-
-const os = require("os");
+These normally don't require npm installation.
 
 
-These modules do not normally require npm installation.
-*/
-
-
-/*
 ===========================================================
-12. FILE SYSTEM MODULE
+SECTION 4: NODE.JS CORE MODULES
 ===========================================================
+
+Topics:
+
+1. fs
+2. path
+3. http
+4. os
+5. events
+6. url
+
+
+-----------------------------------------------------------
+1. FILE SYSTEM MODULE - fs
+-----------------------------------------------------------
 
 fs module is used to work with files.
-*/
-
 
 const fs = require("fs");
 
-
-// Write file
+Write file:
 
 fs.writeFileSync(
     "example.txt",
     "Hello Node.js"
 );
 
-
-// Read file
+Read file:
 
 const data = fs.readFileSync(
     "example.txt",
@@ -473,22 +409,18 @@ const data = fs.readFileSync(
 
 console.log(data);
 
-
-/*
-IMPORTANT:
+Synchronous:
 
 writeFileSync()
 readFileSync()
 
-are synchronous operations.
+Asynchronous:
 
-Node.js also provides asynchronous versions such as:
-
-fs.writeFile()
-fs.readFile()
+writeFile()
+readFile()
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is fs module?
 
@@ -496,17 +428,13 @@ Answer:
 
 fs is Node.js's built-in File System module used to
 create, read, write, update and delete files.
-*/
 
 
-/*
-===========================================================
-13. PATH MODULE
-===========================================================
+-----------------------------------------------------------
+2. PATH MODULE
+-----------------------------------------------------------
 
 path module helps work with file and directory paths.
-*/
-
 
 const path = require("path");
 
@@ -518,8 +446,6 @@ console.log(
     )
 );
 
-
-/*
 Useful methods:
 
 path.join()
@@ -529,7 +455,7 @@ path.dirname()
 path.extname()
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Why use path module?
 
@@ -537,20 +463,15 @@ Answer:
 
 It provides utilities for working with file and directory
 paths in a platform-independent way.
-*/
 
 
-/*
-===========================================================
-14. HTTP MODULE
-===========================================================
+-----------------------------------------------------------
+3. HTTP MODULE
+-----------------------------------------------------------
 
 Node.js provides a built-in http module to create servers.
-*/
-
 
 const http = require("http");
-
 
 const server = http.createServer(
     (req, res) => {
@@ -564,17 +485,15 @@ const server = http.createServer(
     }
 );
 
+server.listen(3000);
 
-// server.listen(3000);
 
-
-/*
 Open:
 
 http://localhost:3000
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. How can you create a server in Node.js?
 
@@ -582,13 +501,27 @@ Answer:
 
 We can use Node.js's built-in http module and
 http.createServer().
-*/
 
 
-/*
 ===========================================================
-15. EXPRESS.JS
+SECTION 5: EXPRESS.JS BASICS
 ===========================================================
+
+Topics:
+
+1. What is Express.js?
+2. Why Express?
+3. Express Server
+4. Routing
+5. HTTP Methods
+6. Request and Response
+7. JSON Response
+8. Status Codes
+
+
+-----------------------------------------------------------
+1. WHAT IS EXPRESS.JS?
+-----------------------------------------------------------
 
 Express.js is a lightweight web framework for Node.js.
 
@@ -603,33 +536,25 @@ Express helps with:
 5. REST APIs
 6. Error handling
 
-
 Install:
 
 npm install express
 
 
 Example:
-*/
-
 
 const express = require("express");
 
 const app = express();
 
-
 app.get("/", (req, res) => {
-
     res.send("Hello Express");
-
 });
 
+app.listen(3000);
 
-// app.listen(3000);
 
-
-/*
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is Express.js?
 
@@ -637,88 +562,62 @@ Answer:
 
 Express.js is a web framework for Node.js used to build
 web servers and APIs more easily.
-*/
 
 
-/*
-===========================================================
-16. EXPRESS SERVER
-===========================================================
-*/
-
-
-const expressApp = express();
-
-
-// expressApp.listen(3000, () => {
-
-//     console.log("Server running");
-
-// });
-
-
-/*
-Typical structure:
+-----------------------------------------------------------
+2. EXPRESS SERVER
+-----------------------------------------------------------
 
 const express = require("express");
 
 const app = express();
 
 app.get("/", (req, res) => {
-
     res.send("Hello");
-
 });
 
 app.listen(3000);
 
 
 ===========================================================
-*/
+SECTION 6: ROUTING + HTTP
+===========================================================
+
+Topics:
+
+1. Routing
+2. HTTP Methods
+3. GET
+4. POST
+5. PUT
+6. PATCH
+7. DELETE
+8. REST API URLs
 
 
-/*
-===========================================================
-17. ROUTING
-===========================================================
+-----------------------------------------------------------
+1. ROUTING
+-----------------------------------------------------------
 
 Routing means deciding how the server responds to a
 specific URL and HTTP method.
-*/
 
+Example:
 
 app.get("/", (req, res) => {
-
     res.send("Home Page");
-
 });
-
 
 app.get("/about", (req, res) => {
-
     res.send("About Page");
-
 });
-
 
 app.post("/users", (req, res) => {
-
     res.send("Create User");
-
 });
 
 
-/*
-Common HTTP methods:
-
-GET
-POST
-PUT
-PATCH
-DELETE
-
-
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is routing?
 
@@ -726,42 +625,34 @@ Answer:
 
 Routing defines how an application responds to requests
 for different URLs and HTTP methods.
-*/
 
 
-/*
-===========================================================
-18. HTTP METHODS
-===========================================================
+-----------------------------------------------------------
+2. HTTP METHODS
+-----------------------------------------------------------
 
-GET
+GET:
 
 Used to retrieve data.
 
-
-POST
+POST:
 
 Used to create new data.
 
+PUT:
 
-PUT
+Generally used to replace/update a complete resource.
 
-Usually used to replace/update a complete resource.
-
-
-PATCH
+PATCH:
 
 Used to partially update a resource.
 
-
-DELETE
+DELETE:
 
 Used to delete data.
-*/
 
 
-/*
-Example REST API:
+REST API example:
 
 GET     /users
 POST    /users
@@ -769,19 +660,32 @@ GET     /users/:id
 PUT     /users/:id
 PATCH   /users/:id
 DELETE  /users/:id
-*/
 
 
-/*
 ===========================================================
-19. REQUEST AND RESPONSE
+SECTION 7: REQUEST + RESPONSE
 ===========================================================
 
-req = request from client
+Topics:
 
-res = response from server
-*/
+1. req
+2. res
+3. res.send()
+4. res.json()
+5. res.status()
+6. JSON response
+7. Status codes
 
+
+-----------------------------------------------------------
+1. REQUEST AND RESPONSE
+-----------------------------------------------------------
+
+req = Request from client
+
+res = Response from server
+
+Example:
 
 app.get("/user", (req, res) => {
 
@@ -792,45 +696,34 @@ app.get("/user", (req, res) => {
 });
 
 
-/*
-INTERVIEW QUESTION:
+INTERVIEW:
 
-Q. What are req and res in Express?
+Q. What are req and res?
 
 Answer:
 
 req contains information about the incoming request.
 
 res is used to send a response back to the client.
-*/
 
 
-/*
-===========================================================
-20. JSON RESPONSE
-===========================================================*/
-
+-----------------------------------------------------------
+2. JSON RESPONSE
+-----------------------------------------------------------
 
 app.get("/api/user", (req, res) => {
 
     res.json({
-
         name: "Divyanshu",
         age: 22
-
     });
 
 });
 
 
-/*
-===========================================================
-21. STATUS CODE
-===========================================================
-
-HTTP status codes tell the client what happened.
-
-Common codes:
+-----------------------------------------------------------
+3. STATUS CODE
+-----------------------------------------------------------
 
 200 -> Success
 201 -> Created
@@ -839,27 +732,35 @@ Common codes:
 403 -> Forbidden
 404 -> Not Found
 500 -> Internal Server Error
-*/
 
+Example:
 
-app.get("/success", (req, res) => {
-
-    res.status(200).json({
-
-        message: "Success"
-
-    });
-
+res.status(200).json({
+    message: "Success"
 });
 
 
-/*
 ===========================================================
-22. EXPRESS MIDDLEWARE
+SECTION 8: EXPRESS MIDDLEWARE
 ===========================================================
 
-Middleware is a function that runs during the request-
-response cycle.
+Topics:
+
+1. Middleware
+2. next()
+3. Types of Middleware
+4. express.json()
+5. Custom Middleware
+6. Error Middleware
+7. CORS
+
+
+-----------------------------------------------------------
+1. WHAT IS MIDDLEWARE?
+-----------------------------------------------------------
+
+Middleware is a function that runs during the
+request-response cycle.
 
 Basic structure:
 
@@ -867,8 +768,6 @@ Basic structure:
 
 
 Example:
-*/
-
 
 app.use((req, res, next) => {
 
@@ -879,13 +778,12 @@ app.use((req, res, next) => {
 });
 
 
-/*
 next():
 
 Moves the request to the next middleware/route handler.
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is middleware?
 
@@ -894,13 +792,11 @@ Answer:
 Middleware is a function that has access to the request,
 response and next function and can perform work before
 the final response is sent.
-*/
 
 
-/*
-===========================================================
-23. TYPES OF MIDDLEWARE
-===========================================================
+-----------------------------------------------------------
+2. TYPES OF MIDDLEWARE
+-----------------------------------------------------------
 
 1. Application-level middleware
 2. Router-level middleware
@@ -912,49 +808,28 @@ the final response is sent.
 Examples:
 
 express.json()
-
 express.urlencoded()
-
+cors
+morgan
 custom middleware
 
-cors
 
-morgan
-
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-24. express.json()
-===========================================================
+-----------------------------------------------------------
+3. express.json()
+-----------------------------------------------------------
 
 express.json() parses incoming JSON request bodies.
-*/
-
 
 app.use(express.json());
-
-
-/*
-Now a client can send:
-
-{
-    "name": "Divyanshu",
-    "age": 22
-}
-
 
 Then:
 
 req.body
 
-
 can contain the parsed object.
-*/
 
+
+Example:
 
 app.post("/user", (req, res) => {
 
@@ -965,14 +840,25 @@ app.post("/user", (req, res) => {
 });
 
 
-/*
 ===========================================================
-25. ROUTE PARAMETERS
+SECTION 9: ROUTE PARAMETERS + QUERY + BODY
 ===========================================================
+
+Topics:
+
+1. Route Parameters
+2. Query Parameters
+3. req.params
+4. req.query
+5. Request Body
+6. Params vs Query
+
+
+-----------------------------------------------------------
+1. ROUTE PARAMETERS
+-----------------------------------------------------------
 
 Route parameter is a dynamic part of URL.
-*/
-
 
 app.get("/users/:id", (req, res) => {
 
@@ -984,8 +870,6 @@ app.get("/users/:id", (req, res) => {
 
 });
 
-
-/*
 URL:
 
 /users/101
@@ -995,42 +879,50 @@ req.params.id
 Output:
 
 101
-*/
 
 
-/*
-===========================================================
-26. QUERY PARAMETERS
-===========================================================
+-----------------------------------------------------------
+2. QUERY PARAMETERS
+-----------------------------------------------------------
 
-Query parameters are usually used for filtering,
-searching, sorting etc.
+Query parameters are usually used for:
 
+Filtering
+Searching
+Sorting
 
-Example URL:
+Example:
 
 /users?name=Divyanshu&age=22
-
 
 Access:
 
 req.query
-*/
 
 
-app.get("/search", (req, res) => {
+-----------------------------------------------------------
+3. REQUEST BODY
+-----------------------------------------------------------
 
-    console.log(req.query);
+Body contains data sent by the client.
 
-    res.json(req.query);
+Example:
 
-});
+POST /users
+
+{
+    "name": "Divyanshu",
+    "age": 22
+}
+
+Access:
+
+req.body
 
 
-/*
-===========================================================
-27. PARAMS VS QUERY
-===========================================================
+-----------------------------------------------------------
+4. PARAMS VS QUERY
+-----------------------------------------------------------
 
 PARAMS:
 
@@ -1046,7 +938,7 @@ QUERY:
 req.query.id
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Difference between req.params and req.query?
 
@@ -1055,62 +947,33 @@ Answer:
 req.params is used for route parameters.
 
 req.query is used for query-string parameters.
-*/
 
 
-/*
 ===========================================================
-28. REQUEST BODY
+SECTION 10: EXPRESS ROUTER
 ===========================================================
 
-Body contains data sent by the client.
+Topics:
 
-Example:
-
-POST /users
-
-{
-    "name": "Divyanshu",
-    "age": 22
-}
+1. Express Router
+2. Separate route files
+3. app.use()
+4. Route organization
 
 
-Access:
-
-req.body
-*/
-
-
-/*
-===========================================================
-29. EXPRESS ROUTER
-===========================================================
-
-Router helps organize routes into separate files.
-*/
-
+-----------------------------------------------------------
 
 const router = express.Router();
 
-
 router.get("/", (req, res) => {
-
     res.send("All Users");
-
 });
 
-
 router.get("/:id", (req, res) => {
-
     res.send(
         `User ${req.params.id}`
     );
-
 });
-
-
-/*
-Then:
 
 app.use("/users", router);
 
@@ -1118,24 +981,33 @@ app.use("/users", router);
 Now:
 
 GET /users
+
 GET /users/:id
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Why use Express Router?
 
 Answer:
 
-It helps organize related routes into separate modules and
-keeps the application easier to maintain.
-*/
+It helps organize related routes into separate modules
+and keeps the application easier to maintain.
 
 
-/*
 ===========================================================
-30. ERROR HANDLING IN EXPRESS
+SECTION 11: ERROR HANDLING
 ===========================================================
+
+Topics:
+
+1. Error handling
+2. Error middleware
+3. err
+4. req
+5. res
+6. next
+
 
 Error-handling middleware has four parameters:
 
@@ -1143,24 +1015,22 @@ err
 req
 res
 next
-*/
 
+
+Example:
 
 app.use((err, req, res, next) => {
 
     console.log(err);
 
     res.status(500).json({
-
         message: "Something went wrong"
-
     });
 
 });
 
 
-/*
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. How is error middleware different?
 
@@ -1169,19 +1039,31 @@ Answer:
 Express error-handling middleware uses four parameters:
 
 (err, req, res, next)
-*/
 
 
-/*
 ===========================================================
-31. REST API
+SECTION 12: REST API + CRUD
 ===========================================================
+
+Topics:
+
+1. REST API
+2. CRUD
+3. Create
+4. Read
+5. Update
+6. Delete
+7. CRUD API
+
+
+-----------------------------------------------------------
+1. REST API
+-----------------------------------------------------------
 
 REST = Representational State Transfer.
 
 REST API allows clients and servers to communicate using
 HTTP methods and resources.
-
 
 Example:
 
@@ -1192,7 +1074,7 @@ PUT    /products/10
 DELETE /products/10
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is REST API?
 
@@ -1200,13 +1082,11 @@ Answer:
 
 A REST API is an HTTP-based API designed around resources,
 HTTP methods and standard representations such as JSON.
-*/
 
 
-/*
-===========================================================
-32. CRUD
-===========================================================
+-----------------------------------------------------------
+2. CRUD
+-----------------------------------------------------------
 
 CRUD means:
 
@@ -1216,23 +1096,19 @@ U -> Update
 D -> Delete
 
 
-Example:
+Mapping:
 
 CREATE -> POST
 READ   -> GET
 UPDATE -> PUT/PATCH
 DELETE -> DELETE
-*/
 
 
-/*
 ===========================================================
-33. SIMPLE CRUD API
+SECTION 13: SIMPLE CRUD API
 ===========================================================
 
-Example data:
-*/
-
+Example:
 
 let users = [
 
@@ -1249,10 +1125,9 @@ let users = [
 ];
 
 
-/*
+-----------------------------------------------------------
 READ
-*/
-
+-----------------------------------------------------------
 
 app.get("/users", (req, res) => {
 
@@ -1261,10 +1136,9 @@ app.get("/users", (req, res) => {
 });
 
 
-/*
+-----------------------------------------------------------
 CREATE
-*/
-
+-----------------------------------------------------------
 
 app.post("/users", (req, res) => {
 
@@ -1283,10 +1157,9 @@ app.post("/users", (req, res) => {
 });
 
 
-/*
+-----------------------------------------------------------
 UPDATE
-*/
-
+-----------------------------------------------------------
 
 app.put("/users/:id", (req, res) => {
 
@@ -1311,10 +1184,9 @@ app.put("/users/:id", (req, res) => {
 });
 
 
-/*
+-----------------------------------------------------------
 DELETE
-*/
-
+-----------------------------------------------------------
 
 app.delete("/users/:id", (req, res) => {
 
@@ -1325,28 +1197,38 @@ app.delete("/users/:id", (req, res) => {
     );
 
     res.json({
-
         message: "User deleted"
-
     });
 
 });
 
 
-/*
 ===========================================================
-34. WHAT IS MONGODB?
+SECTION 14: MONGODB BASICS
 ===========================================================
+
+Topics:
+
+1. What is MongoDB?
+2. NoSQL
+3. Database
+4. Collection
+5. Document
+6. BSON
+7. _id
+8. ObjectId
+9. SQL vs MongoDB
+
+
+-----------------------------------------------------------
+1. WHAT IS MONGODB?
+-----------------------------------------------------------
 
 MongoDB is a NoSQL database.
 
 It stores data in document format.
 
-Instead of:
-
-Tables + Rows + Columns
-
-MongoDB uses:
+MongoDB structure:
 
 Database
    ↓
@@ -1355,7 +1237,7 @@ Collections
 Documents
 
 
-Example document:
+Example:
 
 {
     name: "Divyanshu",
@@ -1364,7 +1246,7 @@ Example document:
 }
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is MongoDB?
 
@@ -1372,13 +1254,11 @@ Answer:
 
 MongoDB is a document-oriented NoSQL database that stores
 data in flexible BSON documents.
-*/
 
 
-/*
-===========================================================
-35. SQL VS MONGODB
-===========================================================
+-----------------------------------------------------------
+2. SQL VS MONGODB
+-----------------------------------------------------------
 
 SQL:
 
@@ -1388,7 +1268,6 @@ Tables
  ↓
 Rows
 
-
 MongoDB:
 
 Database
@@ -1398,17 +1277,16 @@ Collections
 Documents
 
 
-SQL example:
+SQL:
 
 users table
-
 
 MongoDB:
 
 users collection
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Difference between SQL and MongoDB?
 
@@ -1417,15 +1295,13 @@ Answer:
 Relational databases organize data into tables with defined
 relationships, while MongoDB stores data as flexible
 documents inside collections.
-*/
 
 
-/*
-===========================================================
-36. DOCUMENT
-===========================================================
+-----------------------------------------------------------
+3. DOCUMENT
+-----------------------------------------------------------
 
-MongoDB stores data in documents.
+A MongoDB document is a BSON data record.
 
 Example:
 
@@ -1436,23 +1312,15 @@ Example:
 }
 
 
-A document is similar to a JavaScript object in structure.
-*/
-
-
-/*
-===========================================================
-37. COLLECTION
-===========================================================
+-----------------------------------------------------------
+4. COLLECTION
+-----------------------------------------------------------
 
 Collection is a group of MongoDB documents.
-
-Example:
 
 Database:
 
 college
-
 
 Collections:
 
@@ -1461,33 +1329,15 @@ teachers
 courses
 
 
-Students collection:
-
-{
-    name: "Divyanshu",
-    age: 22
-}
-
-{
-    name: "Ayush",
-    age: 21
-}
-*/
-
-
-/*
-===========================================================
-38. BSON
-===========================================================
+-----------------------------------------------------------
+5. BSON
+-----------------------------------------------------------
 
 BSON = Binary JSON.
 
 MongoDB stores documents in BSON format.
 
-BSON supports additional data types beyond JSON.
-
-
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is BSON?
 
@@ -1495,13 +1345,11 @@ Answer:
 
 BSON is a binary-encoded document format used by MongoDB
 to store documents.
-*/
 
 
-/*
-===========================================================
-39. MONGODB _id
-===========================================================
+-----------------------------------------------------------
+6. _id AND ObjectId
+-----------------------------------------------------------
 
 Every MongoDB document normally has a unique _id field.
 
@@ -1512,25 +1360,25 @@ Example:
     name: "Divyanshu"
 }
 
-
 MongoDB can automatically generate ObjectId values.
-*/
 
 
-/*
 ===========================================================
-40. MONGODB CRUD
+SECTION 15: MONGODB CRUD + OPERATORS
 ===========================================================
 
+Topics:
+
+1. Create
+2. Read
+3. Update
+4. Delete
+5. Query Operators
+
+
+-----------------------------------------------------------
 CREATE
-READ
-UPDATE
-DELETE
-*/
-
-
-/*
-CREATE:
+-----------------------------------------------------------
 
 db.users.insertOne({
     name: "Divyanshu",
@@ -1538,7 +1386,9 @@ db.users.insertOne({
 });
 
 
-READ:
+-----------------------------------------------------------
+READ
+-----------------------------------------------------------
 
 db.users.find();
 
@@ -1550,7 +1400,9 @@ db.users.findOne({
 });
 
 
-UPDATE:
+-----------------------------------------------------------
+UPDATE
+-----------------------------------------------------------
 
 db.users.updateOne(
     { name: "Divyanshu" },
@@ -1558,45 +1410,47 @@ db.users.updateOne(
 );
 
 
-DELETE:
+-----------------------------------------------------------
+DELETE
+-----------------------------------------------------------
 
 db.users.deleteOne({
     name: "Divyanshu"
 });
 
 
-===========================================================
-*/
+-----------------------------------------------------------
+QUERY OPERATORS
+-----------------------------------------------------------
 
+Comparison:
 
-/*
-===========================================================
-41. MONGODB QUERY OPERATORS
-===========================================================
-
-Common operators:
-
+$eq
+$ne
 $gt
 $gte
 $lt
 $lte
-$eq
-$ne
 $in
 $nin
+
+Logical:
+
 $and
 $or
+$not
+$nor
+
+Update:
+
 $set
+$unset
 $inc
 $push
 $pull
-*/
 
 
-/*
 Example:
-
-Find users older than 18:
 
 db.users.find({
     age: {
@@ -1605,23 +1459,92 @@ db.users.find({
 });
 
 
-Find users whose age is 18 or more:
+===========================================================
+SECTION 16: MONGODB INDEX + AGGREGATION
+===========================================================
 
-db.users.find({
-    age: {
-        $gte: 18
-    }
+Topics:
+
+1. Index
+2. createIndex()
+3. Aggregation
+4. Aggregation Pipeline
+
+
+-----------------------------------------------------------
+1. INDEX
+-----------------------------------------------------------
+
+Index improves query performance for supported queries.
+
+Example:
+
+db.users.createIndex({
+    email: 1
 });
 
+1  -> ascending
+-1 -> descending
+
+
+INTERVIEW:
+
+Q. What is an index?
+
+Answer:
+
+An index is a data structure that helps MongoDB find
+matching documents more efficiently for supported queries,
+at the cost of additional storage and write overhead.
+
+
+-----------------------------------------------------------
+2. AGGREGATION
+-----------------------------------------------------------
+
+Aggregation processes documents through a pipeline.
+
+It can:
+
+Calculate
+Transform
+Group
+Filter data
+
+
+Example:
+
+db.orders.aggregate([
+    {
+        $group: {
+            _id: "$userId",
+            total: {
+                $sum: "$amount"
+            }
+        }
+    }
+]);
+
 
 ===========================================================
-*/
+SECTION 17: MONGOOSE
+===========================================================
+
+Topics:
+
+1. What is Mongoose?
+2. ODM
+3. Connection
+4. Schema
+5. Model
+6. Validation
+7. Queries
+8. populate()
 
 
-/*
-===========================================================
-42. MONGOOSE
-===========================================================
+-----------------------------------------------------------
+1. WHAT IS MONGOOSE?
+-----------------------------------------------------------
 
 Mongoose is an ODM for MongoDB and Node.js.
 
@@ -1629,7 +1552,7 @@ ODM:
 
 Object Document Mapper.
 
-It provides:
+Mongoose provides:
 
 1. Schema
 2. Models
@@ -1641,14 +1564,13 @@ It provides:
 Install:
 
 npm install mongoose
-*/
 
+
+-----------------------------------------------------------
+2. CONNECTION
+-----------------------------------------------------------
 
 const mongoose = require("mongoose");
-
-
-/*
-Connection example:
 
 mongoose.connect(
     "mongodb://127.0.0.1:27017/mydatabase"
@@ -1656,18 +1578,13 @@ mongoose.connect(
 
 
 ===========================================================
-*/
-
-
-/*
-===========================================================
-43. MONGOOSE SCHEMA
+SECTION 18: MONGOOSE SCHEMA
 ===========================================================
 
 Schema defines the structure/rules for documents in
 Mongoose.
-*/
 
+Example:
 
 const userSchema = new mongoose.Schema({
 
@@ -1690,8 +1607,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
-/*
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is Schema in Mongoose?
 
@@ -1699,19 +1615,17 @@ Answer:
 
 A Schema defines the structure, types and validation rules
 for documents managed through Mongoose.
-*/
 
 
-/*
 ===========================================================
-44. MONGOOSE MODEL
+SECTION 19: MONGOOSE MODEL
 ===========================================================
 
 Model is created from a Schema.
 
 Model is used to interact with MongoDB documents.
-*/
 
+Example:
 
 const User = mongoose.model(
     "User",
@@ -1719,8 +1633,7 @@ const User = mongoose.model(
 );
 
 
-/*
-Now we can use:
+Common methods:
 
 User.find()
 User.findOne()
@@ -1728,23 +1641,22 @@ User.create()
 User.findById()
 User.findByIdAndUpdate()
 User.findByIdAndDelete()
-*/
 
 
-/*
 ===========================================================
-45. CREATE USING MONGOOSE
-===========================================================*/
+SECTION 20: MONGOOSE CRUD
+===========================================================
 
+-----------------------------------------------------------
+CREATE
+-----------------------------------------------------------
 
 async function createUser() {
 
     const user = await User.create({
 
         name: "Divyanshu",
-
         age: 22,
-
         email: "divyanshu@example.com"
 
     });
@@ -1754,11 +1666,9 @@ async function createUser() {
 }
 
 
-/*
-===========================================================
-46. FIND USING MONGOOSE
-===========================================================*/
-
+-----------------------------------------------------------
+READ
+-----------------------------------------------------------
 
 async function getAllUsers() {
 
@@ -1769,18 +1679,14 @@ async function getAllUsers() {
 }
 
 
-/*
-===========================================================
-47. FIND ONE
-===========================================================*/
-
+-----------------------------------------------------------
+FIND ONE
+-----------------------------------------------------------
 
 async function findUser() {
 
     const user = await User.findOne({
-
         name: "Divyanshu"
-
     });
 
     console.log(user);
@@ -1788,11 +1694,9 @@ async function findUser() {
 }
 
 
-/*
-===========================================================
-48. UPDATE
-===========================================================*/
-
+-----------------------------------------------------------
+UPDATE
+-----------------------------------------------------------
 
 async function updateUser(id) {
 
@@ -1816,18 +1720,14 @@ async function updateUser(id) {
 }
 
 
-/*
 new: true
 
-means return the updated document.
-*/
+Means return the updated document.
 
 
-/*
-===========================================================
-49. DELETE
-===========================================================*/
-
+-----------------------------------------------------------
+DELETE
+-----------------------------------------------------------
 
 async function deleteUser(id) {
 
@@ -1836,13 +1736,11 @@ async function deleteUser(id) {
 }
 
 
-/*
 ===========================================================
-50. MONGOOSE VALIDATION
+SECTION 21: MONGOOSE VALIDATION
 ===========================================================
 
 Mongoose allows validation.
-
 
 Example:
 
@@ -1857,7 +1755,7 @@ const schema = new mongoose.Schema({
 });
 
 
-Other common validation options:
+Common validation:
 
 required
 min
@@ -1868,67 +1766,33 @@ enum
 match
 
 
-===========================================================
-*/
-
-
-/*
-===========================================================
-51. UNIQUE IS NOT VALIDATION
-===========================================================
-
-IMPORTANT INTERVIEW POINT:
+-----------------------------------------------------------
+IMPORTANT INTERVIEW POINT
+-----------------------------------------------------------
 
 unique: true is primarily an index constraint/helper,
 not a normal Mongoose validator.
 
-It does not itself guarantee validation in the same way
-required/min/max do.
-
-Database indexes help enforce uniqueness when correctly
-configured.
+required/min/max are validation rules.
 
 
 ===========================================================
-*/
-
-
-/*
-===========================================================
-52. MONGODB INDEX
+SECTION 22: EMBEDDING + REFERENCING + POPULATE
 ===========================================================
 
-Index improves query performance for supported queries.
+Topics:
 
-Example:
-
-db.users.createIndex({
-    email: 1
-});
+1. Embedding
+2. Referencing
+3. populate()
 
 
-1  -> ascending
--1 -> descending
+-----------------------------------------------------------
+1. EMBEDDING
+-----------------------------------------------------------
 
-
-INTERVIEW QUESTION:
-
-Q. What is an index?
-
-Answer:
-
-An index is a data structure that helps MongoDB find
-matching documents more efficiently for supported queries,
-at the cost of additional storage and write overhead.
-*/
-
-
-/*
-===========================================================
-53. EMBEDDING
-===========================================================
-
-MongoDB allows nested documents.
+Embedding means storing related data inside the same
+document.
 
 Example:
 
@@ -1942,22 +1806,11 @@ Example:
 }
 
 
-This is called embedding.
+-----------------------------------------------------------
+2. REFERENCING
+-----------------------------------------------------------
 
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-54. REFERENCING
-===========================================================
-
-Instead of storing complete data inside another document,
-we can store a reference to another document.
-
-Example:
+Referencing means storing a reference to another document.
 
 User:
 
@@ -1965,7 +1818,6 @@ User:
     _id: 101,
     name: "Divyanshu"
 }
-
 
 Order:
 
@@ -1975,18 +1827,12 @@ Order:
 }
 
 
-This is referencing.
-*/
-
-
-/*
-===========================================================
-55. POPULATE
-===========================================================
+-----------------------------------------------------------
+3. POPULATE
+-----------------------------------------------------------
 
 Mongoose populate() can replace referenced IDs with
 documents from another collection.
-
 
 Example:
 
@@ -1994,16 +1840,24 @@ Order.find()
     .populate("userId");
 
 
-This is commonly used when working with references.
-*/
-
-
-/*
 ===========================================================
-56. AUTHENTICATION
+SECTION 23: AUTHENTICATION + AUTHORIZATION
 ===========================================================
 
-Authentication:
+Topics:
+
+1. Authentication
+2. Authorization
+3. Password Hashing
+4. JWT
+5. Protected Routes
+
+
+-----------------------------------------------------------
+1. AUTHENTICATION
+-----------------------------------------------------------
+
+Authentication means:
 
 "Who are you?"
 
@@ -2015,7 +1869,11 @@ Email
 Password
 
 
-Authorization:
+-----------------------------------------------------------
+2. AUTHORIZATION
+-----------------------------------------------------------
+
+Authorization means:
 
 "What are you allowed to do?"
 
@@ -2026,7 +1884,7 @@ Admin can delete users.
 Normal user cannot.
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. Authentication vs Authorization?
 
@@ -2035,55 +1893,50 @@ Answer:
 Authentication verifies identity.
 
 Authorization determines permissions.
-*/
 
 
-/*
-===========================================================
-57. PASSWORD HASHING
-===========================================================
+-----------------------------------------------------------
+3. PASSWORD HASHING
+-----------------------------------------------------------
 
 Passwords should NOT be stored as plain text.
 
-A password hashing library such as bcrypt/bcryptjs can
-be used to hash passwords before storing them.
-
-
-Example concept:
+A library such as bcrypt/bcryptjs can be used.
 
 Password:
 
 mypassword123
 
+        ↓
 
-Stored:
+Hash
 
-hashed value
+        ↓
+
+Stored in database
 
 
 During login:
 
-Entered password
-      ↓
-Compare with hash
-      ↓
+Entered Password
+       ↓
+Compare with Hash
+       ↓
 Match / No Match
 
 
 IMPORTANT:
 
-Never store plain-text passwords in the database.
-*/
+Never store plain-text passwords.
 
 
-/*
-===========================================================
-58. JWT
-===========================================================
+-----------------------------------------------------------
+4. JWT
+-----------------------------------------------------------
 
 JWT = JSON Web Token.
 
-It is commonly used for stateless authentication.
+Commonly used for stateless authentication.
 
 Basic flow:
 
@@ -2100,7 +1953,7 @@ Server verifies token
 Access protected route
 
 
-JWT commonly contains:
+JWT contains:
 
 Header
 Payload
@@ -2109,22 +1962,32 @@ Signature
 
 IMPORTANT:
 
-JWT payload should not be treated as a place for secret
-information. A normal JWT payload is readable by the client
-unless encrypted separately.
-*/
+JWT payload should not be treated as secret information.
 
 
-/*
 ===========================================================
-59. CORS
+SECTION 24: CORS + ENVIRONMENT VARIABLES
 ===========================================================
+
+Topics:
+
+1. CORS
+2. Environment Variables
+3. dotenv
+4. process.env
+5. .env
+6. API Keys
+7. Database URL
+
+
+-----------------------------------------------------------
+1. CORS
+-----------------------------------------------------------
 
 CORS = Cross-Origin Resource Sharing.
 
-It controls whether a browser allows a web page from one
-origin to access resources from another origin.
-
+It controls whether a browser allows a web page from
+one origin to access resources from another origin.
 
 Example:
 
@@ -2132,13 +1995,9 @@ Frontend:
 
 http://localhost:3000
 
-
 Backend:
 
 http://localhost:5000
-
-
-These are different origins.
 
 
 Install:
@@ -2153,7 +2012,7 @@ const cors = require("cors");
 app.use(cors());
 
 
-INTERVIEW QUESTION:
+INTERVIEW:
 
 Q. What is CORS?
 
@@ -2161,16 +2020,14 @@ Answer:
 
 CORS is a browser security mechanism that controls
 cross-origin requests.
-*/
 
 
-/*
-===========================================================
-60. ENVIRONMENT VARIABLES
-===========================================================
+-----------------------------------------------------------
+2. ENVIRONMENT VARIABLES
+-----------------------------------------------------------
 
-Sensitive/configurable information should not normally be
-hard-coded directly in source code.
+Sensitive/configurable information should not normally
+be hard-coded.
 
 Examples:
 
@@ -2180,19 +2037,15 @@ API keys
 Port
 
 
-Using:
+Use:
 
 process.env.PORT
 
 process.env.MONGO_URI
 
-
-A package such as dotenv is commonly used to load values
-from a .env file.
-*/
+dotenv can load values from .env
 
 
-/*
 Example .env:
 
 PORT=5000
@@ -2212,12 +2065,10 @@ console.log(process.env.PORT);
 IMPORTANT:
 
 Do not commit secrets to GitHub.
-*/
 
 
-/*
 ===========================================================
-61. MVC ARCHITECTURE
+SECTION 25: MVC ARCHITECTURE
 ===========================================================
 
 MVC:
@@ -2227,7 +2078,7 @@ V -> View
 C -> Controller
 
 
-Backend project structure:
+Backend structure:
 
 project/
 │
@@ -2244,27 +2095,24 @@ Model:
 
 Database structure.
 
-
 Controller:
 
 Business logic.
-
 
 Routes:
 
 API endpoints.
 
-
 Middleware:
 
 Functions executed during request-response flow.
-*/
 
 
-/*
 ===========================================================
-62. TYPICAL BACKEND FLOW
+SECTION 26: BACKEND REQUEST FLOW
 ===========================================================
+
+Very Important for Interviews.
 
 Client
   ↓
@@ -2307,585 +2155,8 @@ JSON response
 
 
 ===========================================================
-*/
-
-
-/*
+SECTION 27: NODE + EXPRESS + MONGODB COMPLETE FLOW
 ===========================================================
-63. REST API EXAMPLE
-===========================================================
-
-Typical User API:
-
-GET
-/users
-
-POST
-/users
-
-GET
-/users/:id
-
-PUT
-/users/:id
-
-DELETE
-/users/:id
-
-
-Example response:
-
-{
-    "success": true,
-    "data": {
-        "name": "Divyanshu",
-        "age": 22
-    }
-}
-
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-64. NODE.JS INTERVIEW QUESTIONS
-===========================================================
-
-
-Q1. What is Node.js?
-
-Answer:
-
-Node.js is a JavaScript runtime that allows JavaScript
-to run outside the browser.
-
-
------------------------------------------------------------
-
-Q2. Which engine does Node.js use?
-
-Answer:
-
-Google's V8 JavaScript engine.
-
-
------------------------------------------------------------
-
-Q3. Is Node.js single-threaded?
-
-Answer:
-
-The main JavaScript execution is single-threaded, while
-Node.js can handle asynchronous I/O using its runtime
-architecture and underlying system facilities.
-
-
------------------------------------------------------------
-
-Q4. What is npm?
-
-Answer:
-
-Node Package Manager, commonly used to install and manage
-Node.js packages.
-
-
------------------------------------------------------------
-
-Q5. What is package.json?
-
-Answer:
-
-It contains project metadata, scripts and dependencies.
-
-
------------------------------------------------------------
-
-Q6. What is node_modules?
-
-Answer:
-
-Directory containing installed project dependencies.
-
-
------------------------------------------------------------
-
-Q7. What is asynchronous programming?
-
-Answer:
-
-A programming approach where operations such as I/O can
-complete later without blocking the main execution flow.
-
-
------------------------------------------------------------
-
-Q8. What is event-driven architecture?
-
-Answer:
-
-The program responds to events and callbacks, which is
-a core part of Node.js's design.
-
-
------------------------------------------------------------
-
-Q9. What is the Event Loop?
-
-Answer:
-
-It coordinates asynchronous callbacks and the Call Stack
-so JavaScript can continue processing other work.
-
-
------------------------------------------------------------
-
-Q10. What is middleware?
-
-Answer:
-
-A function that can process a request before the final
-response is sent.
-
-
------------------------------------------------------------
-
-Q11. What is require()?
-
-Answer:
-
-In CommonJS, require() is used to import modules.
-
-
------------------------------------------------------------
-
-Q12. What is module.exports?
-
-Answer:
-
-It is used in CommonJS to expose values/functions from
-a module.
-
-
------------------------------------------------------------
-
-Q13. What is process.env?
-
-Answer:
-
-It provides access to environment variables available
-to the Node.js process.
-
-
------------------------------------------------------------
-
-Q14. What is REST API?
-
-Answer:
-
-An HTTP-based API organized around resources and standard
-HTTP methods.
-
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-65. EXPRESS.JS INTERVIEW QUESTIONS
-===========================================================
-
-
-Q1. What is Express.js?
-
-Answer:
-
-Express.js is a web framework for Node.js.
-
-
------------------------------------------------------------
-
-Q2. Why use Express?
-
-Answer:
-
-It simplifies routing, middleware, request handling,
-response handling and API development.
-
-
------------------------------------------------------------
-
-Q3. What is middleware?
-
-Answer:
-
-A function that runs during the request-response cycle.
-
-
------------------------------------------------------------
-
-Q4. What is next()?
-
-Answer:
-
-next() passes control to the next middleware or handler.
-
-
------------------------------------------------------------
-
-Q5. What is routing?
-
-Answer:
-
-Routing determines how the server responds to a particular
-URL and HTTP method.
-
-
------------------------------------------------------------
-
-Q6. What is req.params?
-
-Answer:
-
-It contains route parameters.
-
-
-Example:
-
-/users/:id
-
-
------------------------------------------------------------
-
-Q7. What is req.query?
-
-Answer:
-
-It contains query-string parameters.
-
-
-Example:
-
-/users?name=Divyanshu
-
-
------------------------------------------------------------
-
-Q8. What is req.body?
-
-Answer:
-
-It contains data sent in the request body, after the
-appropriate body-parsing middleware processes it.
-
-
------------------------------------------------------------
-
-Q9. What is res.json()?
-
-Answer:
-
-It sends a JSON response.
-
-
------------------------------------------------------------
-
-Q10. What is res.status()?
-
-Answer:
-
-It sets the HTTP status code of the response.
-
-
------------------------------------------------------------
-
-Q11. What is Express Router?
-
-Answer:
-
-It helps organize routes into separate modules.
-
-
------------------------------------------------------------
-
-Q12. What is error-handling middleware?
-
-Answer:
-
-Middleware with the signature:
-
-(err, req, res, next)
-
-
------------------------------------------------------------
-
-Q13. Difference between PUT and PATCH?
-
-Answer:
-
-PUT is generally used to replace/update a complete
-resource.
-
-PATCH is generally used for partial updates.
-
-
------------------------------------------------------------
-
-Q14. What is express.json()?
-
-Answer:
-
-It parses incoming requests with JSON payloads.
-
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-66. MONGODB INTERVIEW QUESTIONS
-===========================================================
-
-
-Q1. What is MongoDB?
-
-Answer:
-
-MongoDB is a document-oriented NoSQL database.
-
-
------------------------------------------------------------
-
-Q2. What is NoSQL?
-
-Answer:
-
-NoSQL refers to database systems that use models other
-than traditional relational tables, such as documents,
-key-value, graph or wide-column models.
-
-
------------------------------------------------------------
-
-Q3. What is a document?
-
-Answer:
-
-A document is a BSON data record stored in a MongoDB
-collection.
-
-
------------------------------------------------------------
-
-Q4. What is a collection?
-
-Answer:
-
-A collection is a group of MongoDB documents.
-
-
------------------------------------------------------------
-
-Q5. What is BSON?
-
-Answer:
-
-BSON is the binary-encoded document format used by MongoDB.
-
-
------------------------------------------------------------
-
-Q6. What is _id?
-
-Answer:
-
-It is the unique identifier field normally present in
-MongoDB documents.
-
-
------------------------------------------------------------
-
-Q7. What is ObjectId?
-
-Answer:
-
-ObjectId is a commonly used BSON type for unique document
-identifiers.
-
-
------------------------------------------------------------
-
-Q8. What is Mongoose?
-
-Answer:
-
-Mongoose is an ODM library for MongoDB and Node.js that
-provides schemas, models, validation and other utilities.
-
-
------------------------------------------------------------
-
-Q9. What is Schema?
-
-Answer:
-
-Schema defines the structure and rules for documents managed
-through Mongoose.
-
-
------------------------------------------------------------
-
-Q10. What is Model?
-
-Answer:
-
-A Mongoose model is created from a schema and provides an
-interface for interacting with a MongoDB collection.
-
-
------------------------------------------------------------
-
-Q11. What is populate()?
-
-Answer:
-
-populate() allows Mongoose to retrieve referenced documents
-and include them in query results.
-
-
------------------------------------------------------------
-
-Q12. What is indexing?
-
-Answer:
-
-Indexing helps MongoDB find matching documents more
-efficiently for supported queries.
-
-
------------------------------------------------------------
-
-Q13. What is embedding?
-
-Answer:
-
-Embedding stores related data inside the same document.
-
-
------------------------------------------------------------
-
-Q14. What is referencing?
-
-Answer:
-
-Referencing stores a reference to another document instead
-of embedding all of its data.
-
-
------------------------------------------------------------
-
-Q15. What is CRUD?
-
-Answer:
-
-Create
-Read
-Update
-Delete
-
-
------------------------------------------------------------
-
-Q16. What is MongoDB aggregation?
-
-Answer:
-
-Aggregation is used to process documents through a pipeline
-of stages to calculate, transform, group or filter data.
-
-
-Example:
-
-db.orders.aggregate([
-    {
-        $group: {
-            _id: "$userId",
-            total: {
-                $sum: "$amount"
-            }
-        }
-    }
-]);
-
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-67. IMPORTANT MONGODB OPERATORS
-===========================================================
-
-Comparison:
-
-$eq
-$ne
-$gt
-$gte
-$lt
-$lte
-$in
-$nin
-
-
-Logical:
-
-$and
-$or
-$not
-$nor
-
-
-Update:
-
-$set
-$unset
-$inc
-$push
-$pull
-
-
-Example:
-
-db.users.updateOne(
-
-    { name: "Divyanshu" },
-
-    {
-        $set: {
-            age: 23
-        }
-    }
-
-);
-
-
-===========================================================
-*/
-
-
-/*
-===========================================================
-68. NODE + EXPRESS + MONGODB COMPLETE FLOW
-===========================================================
-
-This is VERY IMPORTANT for interviews.
-
 
 Frontend
    ↓
@@ -2916,11 +2187,11 @@ User clicks:
 
 "Get Users"
 
-
 Frontend sends:
 
 GET /api/users
 
+        ↓
 
 Express receives request.
 
@@ -2930,23 +2201,19 @@ Route identifies:
 
 GET /api/users
 
-
         ↓
 
 Controller runs:
 
 User.find()
 
-
         ↓
 
 Mongoose talks to MongoDB.
 
-
         ↓
 
 MongoDB returns documents.
-
 
         ↓
 
@@ -2954,24 +2221,18 @@ Controller sends:
 
 res.json(users)
 
-
         ↓
 
 Frontend receives JSON.
 
 
 ===========================================================
-*/
-
-
-/*
-===========================================================
-69. IMPORTANT BACKEND INTERVIEW DIFFERENCES
+SECTION 28: IMPORTANT DIFFERENCES
 ===========================================================
 
-
-Node.js vs Express.js
----------------------
+-----------------------------------------------------------
+NODE.JS VS EXPRESS.JS
+-----------------------------------------------------------
 
 Node.js:
 
@@ -2983,14 +2244,12 @@ Framework built on Node.js.
 
 
 -----------------------------------------------------------
-
-MongoDB vs Mongoose
--------------------
+MONGODB VS MONGOOSE
+-----------------------------------------------------------
 
 MongoDB:
 
 Database.
-
 
 Mongoose:
 
@@ -2998,14 +2257,12 @@ ODM library used to work with MongoDB from Node.js.
 
 
 -----------------------------------------------------------
-
-Authentication vs Authorization
--------------------------------
+AUTHENTICATION VS AUTHORIZATION
+-----------------------------------------------------------
 
 Authentication:
 
 Who are you?
-
 
 Authorization:
 
@@ -3013,14 +2270,12 @@ What are you allowed to do?
 
 
 -----------------------------------------------------------
-
-PUT vs PATCH
-------------
+PUT VS PATCH
+-----------------------------------------------------------
 
 PUT:
 
 Generally replaces the resource.
-
 
 PATCH:
 
@@ -3028,14 +2283,12 @@ Generally updates part of the resource.
 
 
 -----------------------------------------------------------
-
-req.params vs req.query
------------------------
+req.params VS req.query
+-----------------------------------------------------------
 
 req.params:
 
 Route parameters.
-
 
 req.query:
 
@@ -3043,14 +2296,12 @@ Query-string parameters.
 
 
 -----------------------------------------------------------
-
-SQL vs MongoDB
---------------
+SQL VS MONGODB
+-----------------------------------------------------------
 
 SQL:
 
 Tables + Rows + Columns
-
 
 MongoDB:
 
@@ -3058,14 +2309,12 @@ Collections + Documents
 
 
 -----------------------------------------------------------
-
-Embedding vs Referencing
-------------------------
+EMBEDDING VS REFERENCING
+-----------------------------------------------------------
 
 Embedding:
 
 Store related data inside same document.
-
 
 Referencing:
 
@@ -3073,12 +2322,7 @@ Store relation/reference to another document.
 
 
 ===========================================================
-*/
-
-
-/*
-===========================================================
-70. BASIC BACKEND PROJECT STRUCTURE
+SECTION 29: BACKEND PROJECT STRUCTURE
 ===========================================================
 
 my-backend/
@@ -3108,115 +2352,86 @@ my-backend/
 └── server.js
 
 
-This type of structure is commonly used to keep backend
-code organized.
-
-
 ===========================================================
-*/
-
-
-/*
-===========================================================
-71. BACKEND PROJECT PRACTICE ORDER
+SECTION 30: BACKEND LEARNING ORDER
 ===========================================================
 
 STEP 1:
-
 Learn Node.js basics.
 
         ↓
 
 STEP 2:
-
 Learn npm and modules.
 
         ↓
 
 STEP 3:
-
 Create basic HTTP server.
 
         ↓
 
 STEP 4:
-
 Learn Express.js.
 
         ↓
 
 STEP 5:
-
 Learn routes.
 
         ↓
 
 STEP 6:
-
 Learn middleware.
 
         ↓
 
 STEP 7:
-
 Learn REST API.
 
         ↓
 
 STEP 8:
-
 Learn CRUD.
 
         ↓
 
 STEP 9:
-
 Learn MongoDB.
 
         ↓
 
 STEP 10:
-
 Learn Mongoose.
 
         ↓
 
 STEP 11:
-
 Connect Express with MongoDB.
 
         ↓
 
 STEP 12:
-
 Create CRUD API.
 
         ↓
 
 STEP 13:
-
-Learn authentication.
+Learn Authentication.
 
         ↓
 
 STEP 14:
-
-Learn JWT + password hashing.
+Learn JWT + Password Hashing.
 
         ↓
 
 STEP 15:
-
 Build complete backend project.
 
 
 ===========================================================
-*/
-
-
-/*
-===========================================================
-72. PROJECTS FOR PRACTICE
+SECTION 31: PROJECT PRACTICE
 ===========================================================
 
 BEGINNER:
@@ -3266,7 +2481,7 @@ Payments
 
 -----------------------------------------------------------
 
-FULL STACK PROJECT:
+FULL STACK:
 
 React
    +
@@ -3277,25 +2492,361 @@ Express.js
 MongoDB
 
 
-Example:
+===========================================================
+SECTION 32: NODE.JS INTERVIEW QUESTIONS
+===========================================================
 
-Frontend:
-React
+Q1. What is Node.js?
 
-Backend:
-Node.js + Express
+Answer:
 
-Database:
-MongoDB
+Node.js is a JavaScript runtime that allows JavaScript
+to run outside the browser.
+
+
+Q2. Which engine does Node.js use?
+
+Answer:
+
+Google's V8 JavaScript engine.
+
+
+Q3. Is Node.js single-threaded?
+
+Answer:
+
+The main JavaScript execution is single-threaded, while
+Node.js can handle asynchronous I/O using its runtime
+architecture and underlying system facilities.
+
+
+Q4. What is npm?
+
+Answer:
+
+Node Package Manager, commonly used to install and manage
+Node.js packages.
+
+
+Q5. What is package.json?
+
+Answer:
+
+It contains project metadata, scripts and dependencies.
+
+
+Q6. What is node_modules?
+
+Answer:
+
+Directory containing installed project dependencies.
+
+
+Q7. What is asynchronous programming?
+
+Answer:
+
+A programming approach where operations such as I/O can
+complete later without blocking the main execution flow.
+
+
+Q8. What is event-driven architecture?
+
+Answer:
+
+The program responds to events and callbacks, which is
+a core part of Node.js's design.
+
+
+Q9. What is Event Loop?
+
+Answer:
+
+It coordinates asynchronous callbacks and the Call Stack
+so JavaScript can continue processing other work.
+
+
+Q10. What is middleware?
+
+Answer:
+
+A function that can process a request before the final
+response is sent.
+
+
+Q11. What is require()?
+
+Answer:
+
+In CommonJS, require() is used to import modules.
+
+
+Q12. What is module.exports?
+
+Answer:
+
+It is used in CommonJS to expose values/functions from
+a module.
+
+
+Q13. What is process.env?
+
+Answer:
+
+It provides access to environment variables available
+to the Node.js process.
+
+
+Q14. What is REST API?
+
+Answer:
+
+An HTTP-based API organized around resources and standard
+HTTP methods.
 
 
 ===========================================================
-*/
-
-
-/*
+SECTION 33: EXPRESS.JS INTERVIEW QUESTIONS
 ===========================================================
-73. MOST IMPORTANT INTERVIEW TOPICS
+
+Q1. What is Express.js?
+
+Answer:
+
+Express.js is a web framework for Node.js.
+
+
+Q2. Why use Express?
+
+Answer:
+
+It simplifies routing, middleware, request handling,
+response handling and API development.
+
+
+Q3. What is middleware?
+
+Answer:
+
+A function that runs during the request-response cycle.
+
+
+Q4. What is next()?
+
+Answer:
+
+next() passes control to the next middleware or handler.
+
+
+Q5. What is routing?
+
+Answer:
+
+Routing determines how the server responds to a particular
+URL and HTTP method.
+
+
+Q6. What is req.params?
+
+Answer:
+
+It contains route parameters.
+
+
+Q7. What is req.query?
+
+Answer:
+
+It contains query-string parameters.
+
+
+Q8. What is req.body?
+
+Answer:
+
+It contains data sent in the request body after appropriate
+body-parsing middleware processes it.
+
+
+Q9. What is res.json()?
+
+Answer:
+
+It sends a JSON response.
+
+
+Q10. What is res.status()?
+
+Answer:
+
+It sets the HTTP status code of the response.
+
+
+Q11. What is Express Router?
+
+Answer:
+
+It helps organize routes into separate modules.
+
+
+Q12. What is error-handling middleware?
+
+Answer:
+
+Middleware with the signature:
+
+(err, req, res, next)
+
+
+Q13. Difference between PUT and PATCH?
+
+Answer:
+
+PUT is generally used to replace/update a complete resource.
+
+PATCH is generally used for partial updates.
+
+
+Q14. What is express.json()?
+
+Answer:
+
+It parses incoming requests with JSON payloads.
+
+
+===========================================================
+SECTION 34: MONGODB INTERVIEW QUESTIONS
+===========================================================
+
+Q1. What is MongoDB?
+
+Answer:
+
+MongoDB is a document-oriented NoSQL database.
+
+
+Q2. What is NoSQL?
+
+Answer:
+
+NoSQL refers to database systems that use models other
+than traditional relational tables, such as documents,
+key-value, graph or wide-column models.
+
+
+Q3. What is a document?
+
+Answer:
+
+A document is a BSON data record stored in a MongoDB
+collection.
+
+
+Q4. What is a collection?
+
+Answer:
+
+A collection is a group of MongoDB documents.
+
+
+Q5. What is BSON?
+
+Answer:
+
+BSON is the binary-encoded document format used by MongoDB.
+
+
+Q6. What is _id?
+
+Answer:
+
+It is the unique identifier field normally present in
+MongoDB documents.
+
+
+Q7. What is ObjectId?
+
+Answer:
+
+ObjectId is a commonly used BSON type for unique document
+identifiers.
+
+
+Q8. What is Mongoose?
+
+Answer:
+
+Mongoose is an ODM library for MongoDB and Node.js that
+provides schemas, models, validation and other utilities.
+
+
+Q9. What is Schema?
+
+Answer:
+
+Schema defines the structure and rules for documents
+managed through Mongoose.
+
+
+Q10. What is Model?
+
+Answer:
+
+A Mongoose model is created from a schema and provides an
+interface for interacting with a MongoDB collection.
+
+
+Q11. What is populate()?
+
+Answer:
+
+populate() allows Mongoose to retrieve referenced documents
+and include them in query results.
+
+
+Q12. What is indexing?
+
+Answer:
+
+Indexing helps MongoDB find matching documents more
+efficiently for supported queries.
+
+
+Q13. What is embedding?
+
+Answer:
+
+Embedding stores related data inside the same document.
+
+
+Q14. What is referencing?
+
+Answer:
+
+Referencing stores a reference to another document instead
+of embedding all of its data.
+
+
+Q15. What is CRUD?
+
+Answer:
+
+Create
+Read
+Update
+Delete
+
+
+Q16. What is MongoDB aggregation?
+
+Answer:
+
+Aggregation is used to process documents through a pipeline
+of stages to calculate, transform, group or filter data.
+
+
+===========================================================
+SECTION 35: MOST IMPORTANT INTERVIEW TOPICS
 ===========================================================
 
 NODE.JS:
@@ -3303,8 +2854,8 @@ NODE.JS:
 ✓ Node.js
 ✓ V8
 ✓ Event Loop
-✓ Asynchronous programming
-✓ Non-blocking I/O
+✓ Asynchronous Programming
+✓ Non-Blocking I/O
 ✓ npm
 ✓ package.json
 ✓ Modules
@@ -3329,8 +2880,8 @@ EXPRESS.JS:
 ✓ req.body
 ✓ REST API
 ✓ CRUD
-✓ Status codes
-✓ Error handling
+✓ Status Codes
+✓ Error Handling
 ✓ Express Router
 ✓ CORS
 
@@ -3344,7 +2895,7 @@ MONGODB:
 ✓ BSON
 ✓ ObjectId
 ✓ CRUD
-✓ Query operators
+✓ Query Operators
 ✓ Index
 ✓ Aggregation
 ✓ Embedding
@@ -3359,21 +2910,21 @@ MONGOOSE:
 ✓ Validation
 ✓ populate()
 ✓ Queries
-✓ Middleware/hooks
+✓ Middleware/Hooks
 
 
 AUTHENTICATION:
 
 ✓ Authentication
 ✓ Authorization
-✓ Password hashing
+✓ Password Hashing
 ✓ JWT
-✓ Cookies/tokens
-✓ Protected routes
+✓ Cookies/Tokens
+✓ Protected Routes
 
 
 ===========================================================
-74. FINAL INTERVIEW FORMULA
+SECTION 36: FINAL INTERVIEW FORMULA
 ===========================================================
 
 For every backend topic, prepare:
@@ -3424,11 +2975,8 @@ Validation
 Error handling
 
 
-This is a good way to answer interview questions.
-
-
 ===========================================================
-75. FINAL FULL STACK ROADMAP
+SECTION 37: FULL STACK ROADMAP
 ===========================================================
 
 JAVASCRIPT
@@ -3467,6 +3015,6 @@ FULL STACK PROJECT
 
 
 ===========================================================
-                 END OF NOTES
+                    END OF NOTES
 ===========================================================
 */
